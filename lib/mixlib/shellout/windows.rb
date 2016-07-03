@@ -282,7 +282,10 @@ module Mixlib
               next unless env
               if env_first_char
                 env_first_char = false
-                env = false and next if c !~ /[A-Za-z_]/
+                if (c !~ /[A-Za-z_]/)
+                  env = false
+                  next 
+                end
               end
               env = false if c !~ /[A-Za-z1-9_]/
             end
